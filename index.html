@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>立翔的个人空间</title>
+    <!-- 预加载关键资源 -->
+    <link rel="preload" href="imgs/【哲风壁纸】2024-11-08 12_01_08.png" as="image">
+    <link rel="preload" href="style.css" as="style">
+    <!-- 异步加载非关键CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </noscript>
+    <!-- 添加以下优化标签 -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//music.163.com">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="立翔的个人空间 - 分享生活与技术">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+    <canvas id="mouseCanvas"></canvas>
+    <div class="overlay"></div>
+    <div class="loading-screen">
+        <div class="loader"></div>
+    </div>
+    
+    <!-- 顶部导航栏 -->
+    <nav>
+        <div class="nav-buttons">
+            <button onclick="toggleFullscreen()"><i class="fas fa-expand"></i> 全屏</button>
+            <button onclick="refreshPage()"><i class="fas fa-sync"></i> 刷新</button>
+            <button onclick="toggleTheme()"><i class="fas fa-moon"></i> 主</button>
+            <button onclick="goBack()"><i class="fas fa-arrow-left"></i> 返回</button>
+            <button onclick="toggleBackgroundPanel()"><i class="fas fa-image"></i> 背景</button>
+        </div>
+        <div class="theme-panel" id="themePanel">
+            <div class="theme-options">
+                <h3>选择主题</h3>
+                <div class="theme-colors">
+                    <button class="theme-color" data-theme="default" style="background: linear-gradient(45deg, #2c3e50, #3498db);">
+                        <i class="fas fa-check"></i>
+                    </button>
+                    <button class="theme-color" data-theme="purple" style="background: linear-gradient(45deg, #8e44ad, #9b59b6);">
+                        <i class="fas fa-check"></i>
+                    </button>
+                    <button class="theme-color" data-theme="green" style="background: linear-gradient(45deg, #27ae60, #2ecc71);">
+                        <i class="fas fa-check"></i>
+                    </button>
+                    <button class="theme-color" data-theme="orange" style="background: linear-gradient(45deg, #d35400, #e67e22);">
+                        <i class="fas fa-check"></i>
+                    </button>
+                </div>
+                <div class="theme-mode">
+                    <button id="lightMode"><i class="fas fa-sun"></i> 浅色</button>
+                    <button id="darkMode"><i class="fas fa-moon"></i> 深色</button>
+                    <button id="autoMode"><i class="fas fa-magic"></i> 自动</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容区 -->
+    <main>
+        <div class="welcome-text">
+            <div class="typing-text"></div>
+            <div class="cursor">|</div>
+        </div>
+        
+        <h1>欢迎访问立翔的个人空间</h1>
+        
+        <section class="interests">
+            <h2>探索</h2>
+            <div class="interest-grid">
+                <div class="interest-item">
+                    <i class="fas fa-music"></i>
+                    <span>音乐</span>
+                    <button class="load-music-btn" onclick="loadMusicPlayer()">
+                        <i class="fas fa-play"></i> 加载音乐播放器
+                    </button>
+                    <div id="music-player-container"></div>
+                </div>
+                <div class="interest-item">
+                    <i class="fas fa-camera"></i>
+                    <span>摄影</span>
+                </div>
+                <div class="interest-item">
+                    <i class="fas fa-gamepad"></i>
+                    <span>游戏</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="social-media">
+            <h2>社交媒体</h2>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-weixin"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <h2>特色功能</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-code"></i>
+                    <h3>代码展示</h3>
+                    <div class="code-preview">
+                        <pre><code>console.log("Hello World!");</code></pre>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>数据统计</h3>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="number">100+</span>
+                            <span class="label">项目</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="comments-section">
+            <h2>留言板</h2>
+            <div class="comment-form">
+                <div class="user-info">
+                    <input type="text" id="commentName" placeholder="昵称" required>
+                    <input type="email" id="commentEmail" placeholder="邮箱（选填）">
+                </div>
+                <textarea id="commentContent" placeholder="说点什么吧..." required></textarea>
+                <button onclick="submitComment()" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> 发
+                </button>
+            </div>
+            <div class="comments-container">
+                <!-- 评论将在这里动态加载 -->
+            </div>
+        </section>
+
+        <div class="widgets-container">
+            <div class="widget clock-widget">
+                <div class="clock">
+                    <div class="time">00:00:00</div>
+                    <div class="date">2024年1月1日</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>ღゝ◡╹ノ♡ 立翔的个人空间</p>
+        <p id="runtime"></p>
+    </footer>
+
+    <!-- 图片展示模态框 -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <!-- 添加背景切换面板 -->
+    <div class="background-panel" id="backgroundPanel">
+        <h3>背景切换</h3>
+        <div class="background-options">
+            <div class="background-option" data-bg="imgs/【哲风壁纸】2024-11-08 12_01_08.png">
+                <img src="imgs/【哲风壁纸】2024-11-08 12_01_08.png" alt="背景1" loading="lazy" width="150" height="100">
+            </div>
+            <div class="background-option" data-bg="imgs/【哲风壁纸】2024-11-08 12_45_57.png">
+                <img src="imgs/【哲风壁纸】2024-11-08 12_45_57.png" alt="背景2" loading="lazy" width="150" height="100">
+            </div>
+        </div>
+    </div>
+
+    <!-- 在 body 末尾添加脚本，使用 defer 属性 -->
+    <script src="script.js" defer></script>
+    <script src="background.js" defer></script>
+    <script src="mouseEffect.js" defer></script>
+
+    <!-- 在 body 末尾添加资源预加载 -->
+    <link rel="prefetch" href="script.js">
+    <link rel="prefetch" href="background.js">
+    <link rel="prefetch" href="mouseEffect.js">
+</body>
+</html> 

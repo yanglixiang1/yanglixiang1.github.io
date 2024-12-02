@@ -1,0 +1,196 @@
+/* 删除画廊相关样式 */
+/* .gallery-section {
+    padding: 2rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-item {
+    position: relative;
+    cursor: pointer;
+}
+
+.gallery-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    /* 其他样式... */
+} */
+
+/* 删除3D相册相关样式 */
+/* .album-section {
+    padding: 2rem;
+}
+
+.album-container {
+    position: relative;
+    height: 400px;
+    /* 其他样式... */
+} */
+
+/* 删除时间轴相关样式 */
+/* .timeline {
+    position: relative;
+    padding: 20px 0;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.timeline-item .date {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.timeline-item .content {
+    color: var(--text-color);
+} */
+
+/* 删除网站合集相关样式 */
+/* .website-collection {
+    padding: 2rem;
+}
+
+.website-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.website-card {
+    background: var(--card-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+} */
+
+/* 添加性能优化相关样式 */
+img {
+    content-visibility: auto;
+    contain: size layout paint;
+}
+
+/* 优化动画性能 */
+.feature-card, .interest-item {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* 减少重排重绘 */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    contain: layout style paint;
+}
+
+/* 优化关键渲染路径 */
+.main-content {
+    contain: content;
+    content-visibility: auto;
+}
+
+/* 优化动画性能 */
+.nav-buttons button {
+    transition: transform 0.2s ease;
+    will-change: transform;
+}
+
+/* 优化滚动性能 */
+body {
+    scroll-behavior: smooth;
+    overflow-y: overlay;
+}
+
+/* 优化布局性能 */
+.interest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    contain: layout style;
+}
+
+/* 优化图片加载 */
+.background-option img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    background-color: #f0f0f0; /* 图片加载前的占位色 */
+}
+
+/* 优化动画性能 */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* 优化字体加载 */
+@font-face {
+    font-family: 'CustomFont';
+    font-display: swap;
+    src: local('Arial'), local('Helvetica');
+}
+
+/* 优化首屏加载 */
+.main-content {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;
+}
+
+/* 优化滚动性能 */
+.skills-container, .comments-container {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* 优化交互响应 */
+.nav-buttons button, .theme-color, .background-option {
+    touch-action: manipulation;
+}
+
+/* 优化加载动画 */
+.loader {
+    contain: strict;
+    will-change: transform;
+}
+
+/* 优化模态框性能 */
+.modal {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: opacity, transform;
+}
+
+/* 添加骨架屏样式 */
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* 优化其他容器的布局 */
+.features-grid {
+    margin-bottom: 2rem;
+}
+
+/* 调整留言板位置 */
+.comments-section {
+    margin-top: 2rem;
+}
