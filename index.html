@@ -10,24 +10,46 @@
     <style>
         body {
             background-image: url('./img/BJ.png');
-            background-size: cover;
+            background-size: auto;
             background-position: center;
             background-repeat: no-repeat;
         }
 
         @media (max-width: 768px) {
             body {
-                background-size: contain;
+                background-size: auto;
             }
         }
     </style>
 </head>
 <body>
-    <div class="landscape-tip">
+    <div class="landscape-tip" id="landscapeTip">
         <i class="fas fa-mobile-alt"></i>
         <p>建议横屏观看以获得最佳体验</p>
         <small>您也可以继续竖屏浏览</small>
     </div>
+
+    <script>
+        // 检测屏幕方向
+        function checkOrientation() {
+            if (window.innerWidth < window.innerHeight) {
+                // 如果是竖屏，显示提示
+                document.getElementById('landscapeTip').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('landscapeTip').style.display = 'none';
+                }, 2000); // 2秒后隐藏提示
+            } else {
+                // 如果是横屏，隐藏提示
+                document.getElementById('landscapeTip').style.display = 'none';
+            }
+        }
+
+        // 初始检查
+        checkOrientation();
+
+        // 监听屏幕方向变化
+        window.addEventListener('resize', checkOrientation);
+    </script>
 
     <div class="loading-screen">
         <div class="particle-container"></div>
