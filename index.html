@@ -8,25 +8,11 @@
     <link rel="stylesheet" href="loading.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        :root {
-            --background-image: url('./img/BJ.png');
-        }
-
         body {
-            background-image: var(--background-image);
-            background-size: cover;
+            background-image: url('./img/BJ.png');
+            background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
-            animation: backgroundAnimation 30s infinite alternate;
-        }
-
-        @keyframes backgroundAnimation {
-            0% {
-                filter: brightness(1);
-            }
-            100% {
-                filter: brightness(0.8);
-            }
         }
 
         @media (max-width: 768px) {
