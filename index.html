@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
-            background-image: url('https://yanglixiang1.github.io/yanglixiang1/IMG/BJ.png');
-            background-size: contain;
+            background-image: url('./img/BJ.png');
+            background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
         }
@@ -30,25 +30,17 @@
     </div>
 
     <script>
-        // 检测屏幕方向
-        function checkOrientation() {
-            if (window.innerWidth < window.innerHeight) {
-                // 如果是竖屏，显示提示
-                document.getElementById('landscapeTip').style.display = 'block';
-                setTimeout(() => {
-                    document.getElementById('landscapeTip').style.display = 'none';
-                }, 2000); // 2秒后隐藏提示
-            } else {
-                // 如果是横屏，隐藏提示
-                document.getElementById('landscapeTip').style.display = 'none';
-            }
-        }
-
-        // 初始检查
-        checkOrientation();
-
-        // 监听屏幕方向变化
-        window.addEventListener('resize', checkOrientation);
+        // 删除与背景特效相关的代码
+        // function checkOrientation() {
+        //     if (window.innerWidth < window.innerHeight) {
+        //         document.getElementById('landscapeTip').style.display = 'block';
+        //         setTimeout(() => {
+        //             document.getElementById('landscapeTip').style.display = 'none';
+        //         }, 2000);
+        //     } else {
+        //         document.getElementById('landscapeTip').style.display = 'none';
+        //     }
+        // }
     </script>
 
     <div class="loading-screen">
@@ -59,11 +51,6 @@
             <div class="loading-subtext">蛇年大吉</div>
             <div class="loading-wishes">万事如意</div>
         </div>
-    </div>
-
-    <div class="background-container">
-        <div class="background-image"></div>
-        <canvas id="particleCanvas" class="particle-canvas"></canvas>
     </div>
 
     <header>
