@@ -11,9 +11,41 @@
         body {
             background-image: url('./img/BJ.png');
             background-repeat: no-repeat;
-            background-size: contain; /* 确保完整显示背景图 */
+            background-size: cover; /* 确保背景图覆盖整个视口 */
             background-attachment: fixed; /* 背景图不随滚动移动 */
             background-position: center; /* 背景图居中显示 */
+        }
+
+        /* 竖屏优化 */
+        @media (orientation: portrait) {
+            body {
+                background-size: contain; /* 竖屏下确保完整显示背景图 */
+            }
+            .landscape-tip {
+                display: block; /* 显示横屏提示 */
+            }
+            .loading-screen {
+                height: 100vh; /* 确保加载屏幕占满整个视口 */
+            }
+            .hero-text {
+                font-size: 1.5em; /* 调整标题字体大小 */
+            }
+            .intro-container {
+                flex-direction: column; /* 竖屏下垂直排列 */
+            }
+            .intro-card {
+                margin-bottom: 20px; /* 卡片之间的间距 */
+            }
+            .music-player {
+                width: 90%; /* 音乐播放器宽度 */
+                margin: 0 auto; /* 居中 */
+            }
+            .carousel-container {
+                width: 100%; /* 轮播图宽度 */
+            }
+            .footer-content {
+                text-align: center; /* 底部内容居中 */
+            }
         }
     </style>
 </head>
