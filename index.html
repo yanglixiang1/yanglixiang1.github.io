@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
+            margin: 0; /* 去掉默认边距 */
+            padding: 0; /* 去掉默认内边距 */
+            overflow-x: hidden; /* 禁止横向滚动 */
             background-image: url('./img/BJ.png');
             background-repeat: no-repeat;
             background-size: cover; /* 确保背景图覆盖整个视口 */
             background-attachment: fixed; /* 背景图不随滚动移动 */
             background-position: center; /* 背景图居中显示 */
-            margin: 0; /* 去掉默认边距 */
-            padding: 0; /* 去掉默认内边距 */
         }
 
         /* 竖屏优化 */
@@ -24,9 +25,9 @@
                 display: flex; /* 使用 Flexbox 布局 */
                 flex-direction: column; /* 垂直排列 */
                 align-items: center; /* 居中对齐 */
-                justify-content: flex-start; /* 垂直居上 */
+                justify-content: flex-start; /* 从顶部开始排列 */
                 min-height: 100vh; /* 确保最小高度为视口高度 */
-                overflow: auto; /* 允许内容滚动 */
+                overflow-y: auto; /* 允许竖向滚动 */
             }
 
             .loading-screen {
@@ -38,17 +39,42 @@
             }
 
             .interesting-websites {
-                width: 90%; /* 宽度 */
-                max-width: 600px; /* 最大宽度 */
-                margin: 20px auto; /* 上下边距，水平居中 */
+                margin: 20px 0; /* 上下边距 */
+                width: 90%; /* 容器宽度 */
+                max-width: 400px; /* 最大宽度 */
+            }
+
+            .website-list {
+                list-style-type: none; /* 去掉列表样式 */
+                padding: 0; /* 去掉内边距 */
+            }
+
+            .website-list li {
+                margin: 10px 0; /* 列表项之间的间距 */
+                transition: transform 0.3s; /* 添加过渡效果 */
+            }
+
+            .website-list li:hover {
+                transform: scale(1.05); /* 鼠标悬停时放大 */
+            }
+
+            .hero-text {
+                font-size: 1.5em; /* 调整标题字体大小 */
                 text-align: center; /* 文本居中 */
-                opacity: 1; /* 确保可见 */
-                animation: fadeIn 1s forwards; /* 添加淡入动画 */
+                margin: 20px; /* 上下边距 */
+            }
+
+            .intro-container {
+                width: 90%; /* 容器宽度 */
+                max-width: 400px; /* 最大宽度 */
+                margin: 20px auto; /* 上下边距，水平居中 */
+                display: flex; /* 使用 Flexbox 布局 */
+                flex-direction: column; /* 垂直排列 */
+                align-items: center; /* 居中对齐 */
             }
 
             .music-player {
                 width: 90%; /* 音乐播放器宽度 */
-                max-width: 400px; /* 最大宽度 */
                 margin: 20px auto; /* 上下边距，水平居中 */
                 padding: 20px; /* 添加内边距 */
                 background-color: rgba(255, 255, 255, 0.9); /* 半透明背景 */
@@ -56,10 +82,9 @@
                 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* 添加阴影 */
             }
 
-            .hero-text {
-                font-size: 1.5em; /* 调整标题字体大小 */
-                text-align: center; /* 文本居中 */
-                margin: 20px; /* 上下边距 */
+            .carousel-container {
+                width: 90%; /* 轮播图宽度 */
+                margin: 20px auto; /* 上下边距，水平居中 */
             }
 
             .footer-content {
@@ -107,12 +132,8 @@
         }
 
         .interesting-websites {
-            width: 90%; /* 宽度 */
-            max-width: 600px; /* 最大宽度 */
-            margin: 20px auto; /* 上下边距，水平居中 */
             text-align: center; /* 文本居中 */
-            opacity: 0; /* 初始透明度 */
-            animation: fadeIn 1s forwards; /* 添加淡入动画 */
+            margin: 20px 0; /* 上下边距 */
         }
 
         .website-list {
@@ -121,63 +142,24 @@
         }
 
         .website-list li {
-            margin: 10px 0; /* 上下间距 */
+            margin: 10px 0; /* 列表项之间的间距 */
+            transition: transform 0.3s; /* 添加过渡效果 */
         }
 
-        .website-list a {
-            text-decoration: none; /* 去掉下划线 */
-            color: #007bff; /* 链接颜色 */
-            font-size: 1.2em; /* 字体大小 */
-            transition: color 0.3s, transform 0.3s; /* 添加过渡效果 */
+        .website-list li:hover {
+            transform: scale(1.05); /* 鼠标悬停时放大 */
         }
 
-        .website-list a:hover {
-            color: #0056b3; /* 悬停时的颜色 */
-            transform: scale(1.05); /* 悬停时放大 */
+        .fade-in {
+            animation: fadeIn 1s ease-in; /* 添加淡入效果 */
         }
 
         @keyframes fadeIn {
             from {
-                opacity: 0; /* 从透明到不透明 */
+                opacity: 0; /* 初始透明度 */
             }
             to {
-                opacity: 1; /* 完全不透明 */
-            }
-        }
-
-        /* 摄影作品部分样式 */
-        #photography {
-            width: 90%; /* 宽度 */
-            max-width: 800px; /* 最大宽度 */
-            margin: 20px auto; /* 上下边距，水平居中 */
-            text-align: center; /* 文本居中 */
-        }
-
-        .carousel-container {
-            position: relative; /* 使按钮绝对定位 */
-            overflow: hidden; /* 隐藏溢出内容 */
-        }
-
-        .carousel {
-            display: flex; /* 使用 Flexbox 布局 */
-            transition: transform 0.5s ease; /* 添加过渡效果 */
-        }
-
-        .carousel-item {
-            min-width: 100%; /* 每个项目占满整个容器 */
-            box-sizing: border-box; /* 包含内边距和边框 */
-        }
-
-        .responsive-image {
-            width: 100%; /* 图片宽度自适应 */
-            height: auto; /* 高度自动 */
-            object-fit: cover; /* 保持图片比例，裁剪多余部分 */
-        }
-
-        /* 竖屏优化 */
-        @media (orientation: portrait) {
-            .carousel-item {
-                min-width: 100%; /* 确保每个项目在竖屏下占满整个容器 */
+                opacity: 1; /* 最终透明度 */
             }
         }
     </style>
@@ -189,6 +171,16 @@
         <small>您也可以继续竖屏浏览</small>
     </div>
 
+    <!-- 新增的有趣网站部分 -->
+    <div class="interesting-websites">
+        <h2 class="fade-in">有趣网站</h2>
+        <ul class="website-list">
+            <li><a href="https://www.amz123.com/ai" target="_blank">Ai大合集类</a></li>
+            <li><a href="https://bigmodel.cn/" target="_blank">大模型网站</a></li>
+            <li><a href="https://www.noisedh.link/" target="_blank">各大有趣网站合集</a></li>
+        </ul>
+    </div>
+
     <div class="loading-screen">
         <div class="particle-container"></div>
         <div class="snake-container"></div>
@@ -197,15 +189,6 @@
             <div class="loading-subtext">蛇年大吉</div>
             <div class="loading-wishes">万事如意</div>
         </div>
-    </div>
-
-    <div class="interesting-websites">
-        <h2 class="fade-in">有趣网站</h2>
-        <ul class="website-list">
-            <li><a href="https://www.amz123.com/ai" target="_blank" class="website-link">Ai大合集类</a></li>
-            <li><a href="https://bigmodel.cn/" target="_blank" class="website-link">大模型网站</a></li>
-            <li><a href="https://www.noisedh.link/" target="_blank" class="website-link">各大有趣网站合集</a></li>
-        </ul>
     </div>
 
     <div class="background-container">
