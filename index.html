@@ -21,48 +21,55 @@
             body {
                 background-size: cover; /* 竖屏下确保背景图覆盖整个视口 */
                 background-position: center; /* 背景图居中显示 */
+                display: flex; /* 使用 Flexbox 布局 */
+                flex-direction: column; /* 垂直排列 */
+                align-items: center; /* 居中对齐 */
+                justify-content: center; /* 垂直居中 */
+                min-height: 100vh; /* 确保最小高度为视口高度 */
+                overflow: hidden; /* 防止整体缩放 */
             }
             .landscape-tip {
                 display: block; /* 显示横屏提示 */
-                font-size: 1.5em; /* 增加字体大小 */
                 text-align: center; /* 文本居中 */
-                margin: 20px 0; /* 上下间距 */
+                margin-bottom: 20px; /* 底部间距 */
             }
             .loading-screen {
                 height: 100vh; /* 确保加载屏幕占满整个视口 */
+                display: flex; /* 使用 Flexbox 布局 */
+                flex-direction: column; /* 垂直排列 */
+                align-items: center; /* 居中对齐 */
+                justify-content: center; /* 垂直居中 */
             }
             .hero-text {
-                font-size: 2.5em; /* 调整标题字体大小 */
-                margin: 20px 0; /* 增加上下间距 */
-                line-height: 1.2; /* 增加行高 */
-                line-height: 1.2; /* 增加行高 */
+                font-size: 1.5em; /* 调整标题字体大小 */
+                text-align: center; /* 文本居中 */
             }
             .intro-container {
                 flex-direction: column; /* 竖屏下垂直排列 */
                 align-items: center; /* 居中对齐 */
             }
             .intro-card {
-                width: 90%; /* 卡片宽度 */
-                width: 80%; /* 卡片宽度 */
-                font-size: 1.2em; /* 增加字体大小 */
+                margin-bottom: 20px; /* 卡片之间的间距 */
                 text-align: center; /* 文本居中 */
             }
             .music-player {
                 width: 90%; /* 音乐播放器宽度 */
-                margin: 20px auto; /* 上下间距 */
-                padding: 15px; /* 添加内边距 */
-                background-color: rgba(255, 255, 255, 0.9); /* 半透明背景 */
-                border-radius: 15px; /* 圆角 */
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* 添加阴影 */
+                margin: 0 auto; /* 居中 */
+                padding: 10px; /* 添加内边距 */
+                background-color: rgba(255, 255, 255, 0.8); /* 半透明背景 */
+                border-radius: 10px; /* 圆角 */
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 添加阴影 */
+                display: flex; /* 使用 Flexbox 布局 */
+                flex-direction: column; /* 垂直排列 */
+                align-items: center; /* 居中对齐 */
             }
             .carousel-container {
                 width: 100%; /* 轮播图宽度 */
-                margin: 20px 0; /* 上下间距 */
+                display: flex; /* 使用 Flexbox 布局 */
+                justify-content: center; /* 居中对齐 */
             }
             .footer-content {
                 text-align: center; /* 底部内容居中 */
-                font-size: 1em; /* 增加字体大小 */
-                padding: 10px; /* 添加内边距 */
             }
         }
 
