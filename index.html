@@ -9,39 +9,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
-            background-image: url('./img/BJ.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                background-size: contain;
-            }
+            background-image: url('images/BJ.png');
+            background-size: contain; /* 使背景图保持原比例显示 */
+            background-repeat: no-repeat; /* 不重复背景图 */
+            background-position: center; /* 使背景图居中 */
+            background-attachment: fixed; /* 背景图固定，不随内容滚动 */
         }
     </style>
 </head>
 <body>
-    <div class="landscape-tip" id="landscapeTip">
+    <div class="landscape-tip">
         <i class="fas fa-mobile-alt"></i>
         <p>建议横屏观看以获得最佳体验</p>
         <small>您也可以继续竖屏浏览</small>
     </div>
-
-    <script>
-        // 删除与背景特效相关的代码
-        // function checkOrientation() {
-        //     if (window.innerWidth < window.innerHeight) {
-        //         document.getElementById('landscapeTip').style.display = 'block';
-        //         setTimeout(() => {
-        //             document.getElementById('landscapeTip').style.display = 'none';
-        //         }, 2000);
-        //     } else {
-        //         document.getElementById('landscapeTip').style.display = 'none';
-        //     }
-        // }
-    </script>
 
     <div class="loading-screen">
         <div class="particle-container"></div>
@@ -51,6 +32,11 @@
             <div class="loading-subtext">蛇年大吉</div>
             <div class="loading-wishes">万事如意</div>
         </div>
+    </div>
+
+    <div class="background-container">
+        <div class="background-image"></div>
+        <canvas id="particleCanvas" class="particle-canvas"></canvas>
     </div>
 
     <header>
