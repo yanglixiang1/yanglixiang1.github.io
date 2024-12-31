@@ -26,7 +26,7 @@
                 align-items: center; /* 居中对齐 */
                 justify-content: flex-start; /* 垂直居上 */
                 min-height: 100vh; /* 确保最小高度为视口高度 */
-                overflow: hidden; /* 防止整体缩放 */
+                overflow: auto; /* 允许内容滚动 */
             }
 
             .loading-screen {
@@ -142,6 +142,42 @@
             }
             to {
                 opacity: 1; /* 完全不透明 */
+            }
+        }
+
+        /* 摄影作品部分样式 */
+        #photography {
+            width: 90%; /* 宽度 */
+            max-width: 800px; /* 最大宽度 */
+            margin: 20px auto; /* 上下边距，水平居中 */
+            text-align: center; /* 文本居中 */
+        }
+
+        .carousel-container {
+            position: relative; /* 使按钮绝对定位 */
+            overflow: hidden; /* 隐藏溢出内容 */
+        }
+
+        .carousel {
+            display: flex; /* 使用 Flexbox 布局 */
+            transition: transform 0.5s ease; /* 添加过渡效果 */
+        }
+
+        .carousel-item {
+            min-width: 100%; /* 每个项目占满整个容器 */
+            box-sizing: border-box; /* 包含内边距和边框 */
+        }
+
+        .responsive-image {
+            width: 100%; /* 图片宽度自适应 */
+            height: auto; /* 高度自动 */
+            object-fit: cover; /* 保持图片比例，裁剪多余部分 */
+        }
+
+        /* 竖屏优化 */
+        @media (orientation: portrait) {
+            .carousel-item {
+                min-width: 100%; /* 确保每个项目在竖屏下占满整个容器 */
             }
         }
     </style>
@@ -398,16 +434,16 @@
         <div class="carousel-container">
             <div class="carousel">
                 <div class="carousel-item">
-                    <img src="img/1734959171754.jpg" alt="摄影作品1">
+                    <img src="img/1734959171754.jpg" alt="摄影作品1" class="responsive-image">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/1734958910887.jpg" alt="摄影作品2">
+                    <img src="img/1734958910887.jpg" alt="摄影作品2" class="responsive-image">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/IMG_20241224_223359.jpg" alt="摄影作品3">
+                    <img src="img/IMG_20241224_223359.jpg" alt="摄影作品3" class="responsive-image">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/IMG_20241224_223534.jpg" alt="摄影作品4">
+                    <img src="img/IMG_20241224_223534.jpg" alt="摄影作品4" class="responsive-image">
                 </div>
             </div>
             <button class="carousel-button prev">&lt;</button>
