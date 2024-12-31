@@ -19,7 +19,8 @@
         /* 竖屏优化 */
         @media (orientation: portrait) {
             body {
-                background-size: contain; /* 竖屏下确保完整显示背景图 */
+                background-size: cover; /* 竖屏下确保背景图覆盖整个视口 */
+                background-position: center; /* 背景图居中显示 */
             }
             .landscape-tip {
                 display: block; /* 显示横屏提示 */
@@ -39,6 +40,10 @@
             .music-player {
                 width: 90%; /* 音乐播放器宽度 */
                 margin: 0 auto; /* 居中 */
+                padding: 10px; /* 添加内边距 */
+                background-color: rgba(255, 255, 255, 0.8); /* 半透明背景 */
+                border-radius: 10px; /* 圆角 */
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 添加阴影 */
             }
             .carousel-container {
                 width: 100%; /* 轮播图宽度 */
@@ -46,6 +51,42 @@
             .footer-content {
                 text-align: center; /* 底部内容居中 */
             }
+        }
+
+        .music-player {
+            display: flex; /* 使用 flexbox 布局 */
+            flex-direction: column; /* 垂直排列 */
+            align-items: center; /* 居中对齐 */
+            padding: 20px; /* 添加内边距 */
+            background-color: rgba(255, 255, 255, 0.9); /* 半透明背景 */
+            border-radius: 15px; /* 圆角 */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* 添加阴影 */
+            transition: transform 0.3s; /* 添加过渡效果 */
+        }
+
+        .music-player:hover {
+            transform: scale(1.05); /* 鼠标悬停时放大 */
+        }
+
+        .player-controls {
+            display: flex; /* 使用 flexbox 布局 */
+            justify-content: space-around; /* 控制按钮之间的间距 */
+            width: 100%; /* 100% 宽度 */
+            margin-top: 10px; /* 上边距 */
+        }
+
+        .control-btn {
+            background-color: #007bff; /* 按钮背景色 */
+            color: white; /* 按钮文字颜色 */
+            border: none; /* 去掉边框 */
+            border-radius: 5px; /* 圆角 */
+            padding: 10px 15px; /* 内边距 */
+            cursor: pointer; /* 鼠标指针样式 */
+            transition: background-color 0.3s; /* 添加过渡效果 */
+        }
+
+        .control-btn:hover {
+            background-color: #0056b3; /* 悬停时的背景色 */
         }
     </style>
 </head>
@@ -408,5 +449,32 @@
             <span class="orientation-text">切换横竖屏</span>
         </button>
     </div>
+
+    <script>
+        // 页面加载后1秒隐藏横屏提示
+        window.onload = function() {
+            setTimeout(function() {
+                const landscapeTip = document.querySelector('.landscape-tip');
+                if (landscapeTip) {
+                    landscapeTip.style.display = 'none'; // 隐藏提示
+                }
+            }, 1000);
+        };
+
+        // 切换横竖屏按钮的功能
+        const orientationToggle = document.querySelector('.orientation-toggle .orientation-btn');
+        if (orientationToggle) {
+            orientationToggle.addEventListener('click', function() {
+                // 切换横竖屏的逻辑
+                if (window.matchMedia("(orientation: portrait)").matches) {
+                    // 如果当前是竖屏，提示用户切换到横屏
+                    alert("请切换到横屏以获得更好的体验。");
+                } else {
+                    // 如果当前是横屏，提示用户切换到竖屏
+                    alert("请切换到竖屏以获得更好的体验。");
+                }
+            });
+        }
+    </script>
 </body>
 </html> 
