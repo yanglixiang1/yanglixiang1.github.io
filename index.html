@@ -143,6 +143,51 @@
                 opacity: 1; /* 完全不透明 */
             }
         }
+
+        .carousel-container {
+            width: 90%; /* 宽度 */
+            max-width: 600px; /* 最大宽度 */
+            margin: 20px auto; /* 上下边距，水平居中 */
+            overflow-x: auto; /* 允许横向滚动 */
+            white-space: nowrap; /* 防止换行 */
+            position: relative; /* 使按钮相对定位 */
+        }
+
+        .carousel {
+            display: inline-flex; /* 使用 inline-flex 以便横向排列 */
+            transition: transform 0.3s ease; /* 添加过渡效果 */
+        }
+
+        .carousel-item {
+            min-width: 100%; /* 每个项目占满视口宽度 */
+            box-sizing: border-box; /* 包含内边距和边框 */
+        }
+
+        .carousel img {
+            width: 100%; /* 图片宽度 */
+            height: auto; /* 高度自适应 */
+            border-radius: 10px; /* 圆角 */
+        }
+
+        .carousel-button {
+            position: absolute; /* 绝对定位 */
+            top: 50%; /* 垂直居中 */
+            transform: translateY(-50%); /* 垂直居中 */
+            background-color: rgba(255, 255, 255, 0.8); /* 半透明背景 */
+            border: none; /* 去掉边框 */
+            border-radius: 5px; /* 圆角 */
+            padding: 10px; /* 内边距 */
+            cursor: pointer; /* 鼠标指针样式 */
+            z-index: 10; /* 确保按钮在上层 */
+        }
+
+        .carousel-button.prev {
+            left: 10px; /* 左侧按钮位置 */
+        }
+
+        .carousel-button.next {
+            right: 10px; /* 右侧按钮位置 */
+        }
     </style>
 </head>
 <body>
@@ -539,6 +584,31 @@
                 }
             });
         }
+
+        const carousel = document.querySelector('.carousel');
+        const prevButton = document.querySelector('.carousel-button.prev');
+        const nextButton = document.querySelector('.carousel-button.next');
+
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            const itemWidth = carousel.clientWidth; // 获取当前可视宽度
+            carousel.style.transform = `translateX(-${currentIndex * itemWidth}px)`; // 更新位置
+        }
+
+        prevButton.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (currentIndex < carousel.children.length - 1) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
     </script>
 </body>
 </html> 
