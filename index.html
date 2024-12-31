@@ -17,10 +17,11 @@
             display: flex; /* 使用 flexbox 布局 */
             flex-direction: column; /* 垂直排列 */
             align-items: center; /* 居中对齐 */
-            justify-content: center; /* 垂直居中 */
+            justify-content: flex-start; /* 垂直开始对齐 */
             min-height: 100vh; /* 最小高度为视口高度 */
             margin: 0; /* 去掉默认边距 */
             padding: 0 10px; /* 添加左右内边距 */
+            overflow: auto; /* 允许滚动 */
         }
 
         /* 竖屏优化 */
@@ -28,6 +29,7 @@
             body {
                 background-size: cover; /* 竖屏下确保背景图覆盖整个视口 */
                 background-position: center; /* 背景图居中显示 */
+                justify-content: flex-start; /* 垂直开始对齐 */
             }
             .landscape-tip {
                 display: block; /* 显示横屏提示 */
